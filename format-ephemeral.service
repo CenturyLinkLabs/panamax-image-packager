@@ -1,0 +1,8 @@
+[Unit]
+    Description=Formats the ephemeral drive
+    Before=docker.service
+[Service]
+    Type=oneshot
+    RemainAfterExit=yes
+    ExecStart=/bin/bash -c '/usr/sbin/wipefs -f `cd /tmp && sudo ./img.sh`'
+    ExecStart=/bin/bash -c '/usr/sbin/mkfs.btrfs -f `cd /tmp && sudo ./img.sh`'
